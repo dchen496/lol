@@ -6,8 +6,7 @@
 	<title>Lol</title>
 	<style type="text/css">
 		body { font-family: Helvetica, sans-serif; text-align: center;}
-		form { margin-top: 15px; }
-    form > input {font-size: 300%; font-weight: bold;}
+    button {margin-top: 15px; font-size: 300%; font-weight: bold;}
     #lolol, #lololol { display: inline-block; }
     .lol {display:none !important;}
 	</style>
@@ -15,9 +14,9 @@
 <body>
 	<div id="lolol"></div>
 	<canvas id="lololol" class="lol" width="480" height="720"></canvas>
-	<form id="lolololol">
-		<input type="button" value="Lol" onClick="Lol()">
-	</form>
+  <div>
+    <button id="lolololol" onClick="Lol()">Lol</button>
+  </div>
 
 	<script type="text/javascript" src="webcam.min.js"></script>
 	<script type="text/javascript">
@@ -33,28 +32,43 @@
 		});
 		Webcam.attach( '#lolol' );
 
+    var LOL = true;
+
 		function Lol() {
-			Webcam.snap(function(lol) {
-        document.getElementById("lolol").className = "lol";
-        document.getElementById("lololol").className = "";
-        document.getElementById("lolololol").className = "lol";
-        var lolol = new Image();
-        lolol.src = lol;
-        lolol.onload = function() {
-          console.log(lolol);
-          var lololol = document.getElementById("lololol")
-          var lol = lololol.getContext('2d');
-          lol.drawImage(lolol, 0, 0);
+      LOL = !LOL;
+      if (LOL) {
+        document.getElementById("lolol").className = "";
+        document.getElementById("lololol").className = "lol";
+        document.getElementById("lolololol").innerHTML = "Lol";
+      } else {
+        Webcam.snap(function(lol) {
+          document.getElementById("lolol").className = "lol";
+          document.getElementById("lololol").className = "";
+          document.getElementById("lolololol").innerHTML = "LOL";
+          var lolol = new Image();
+          lolol.src = lol;
+          lolol.onload = function() {
+            var lololol = document.getElementById("lololol")
+            var lol = lololol.getContext('2d');
+            lol.drawImage(lolol, 0, 0);
 
-          lol.fillStyle = "rgba(0, 0, 0, 0.5)";
-          lol.fillRect(0, 540, 480, 40);
+            lol.fillStyle = "rgba(0, 0, 0, 0.5)";
+            lol.fillRect(0, 540, 480, 40);
 
-          lol.font = "30px Helvetica";
-          lol.fillStyle = "white";
-          lol.textAlign = "center";
-          lol.fillText("Lol", lololol.width / 2, 570);
-        }
-			});
+            lol.font = "30px Helvetica";
+            lol.fillStyle = "white";
+            lol.textAlign = "center";
+            lol.fillText("Lol", lololol.width / 2, 570);
+
+            var lolololol = document.createElement("a");
+            lolololol.download = "Lol.jpg";
+            lolololol.href = lololol.toDataURL();
+            document.body.appendChild(lolololol);
+            lolololol.click();
+            document.body.removeChild(lolololol);
+          }
+        });
+      }
 		}
 	</script>
 	
