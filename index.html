@@ -2,79 +2,79 @@
 
 <html lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Lol</title>
-	<style type="text/css">
-		body { font-family: Helvetica, sans-serif; text-align: center;}
-    button {margin-top: 15px; font-size: 300%; font-weight: bold;}
-    #lolol, #lololol { display: inline-block; }
-    .lol {display:none !important;}
-	</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Lol</title>
+<style type="text/css">
+body { font-family: Helvetica, sans-serif; text-align: center;}
+button {margin-top: 15px; font-size: 300%; font-weight: bold;}
+#lolol, #lololol { display: inline-block; }
+.lol {display:none !important;}
+</style>
 </head>
 <body>
-	<div id="lolol"></div>
-	<canvas id="lololol" class="lol" width="480" height="720"></canvas>
-  <div>
-    <button id="lolololol" onClick="Lol()">Lol</button>
-  </div>
+<div id="lolol"></div>
+<canvas id="lololol" class="lol" width="480" height="720"></canvas>
+<div>
+  <button id="lolololol" onClick="Lol()">Lol</button>
+</div>
 
-	<script type="text/javascript" src="webcam.min.js"></script>
-	<script type="text/javascript">
-    var notlol = 1280;
-    if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
-      notlol = 960;
-    }
-		Webcam.set({
-			width: notlol,
-			height: 720,
-			dest_width: notlol,
-			dest_height: 720,
-			crop_width: 480,
-			crop_height: 720,
-			image_format: 'jpeg',
-			jpeg_quality: 90
-		});
-		Webcam.attach( '#lolol' );
+<script type="text/javascript" src="webcam.min.js"></script>
+<script type="text/javascript">
+var notlol = 1280;
+if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+  notlol = 960;
+}
+Webcam.set({
+width: notlol,
+height: 720,
+dest_width: notlol,
+dest_height: 720,
+crop_width: 480,
+crop_height: 720,
+image_format: 'jpeg',
+jpeg_quality: 90
+});
+Webcam.attach( '#lolol' );
 
-    var LOL = true;
+var LOL = true;
 
-		function Lol() {
-      LOL = !LOL;
-      if (LOL) {
-        document.getElementById("lolol").className = "";
-        document.getElementById("lololol").className = "lol";
-        document.getElementById("lolololol").innerHTML = "Lol";
-      } else {
-        Webcam.snap(function(lol) {
-          document.getElementById("lolol").className = "lol";
-          document.getElementById("lololol").className = "";
-          document.getElementById("lolololol").innerHTML = "LOL";
-          var lolol = new Image();
-          lolol.src = lol;
-          lolol.onload = function() {
-            var lololol = document.getElementById("lololol")
-            var lol = lololol.getContext('2d');
-            lol.drawImage(lolol, 0, 0);
+function Lol() {
+  LOL = !LOL;
+  if (LOL) {
+    document.getElementById("lolol").className = "";
+    document.getElementById("lololol").className = "lol";
+    document.getElementById("lolololol").innerHTML = "Lol";
+  } else {
+    Webcam.snap(function(lol) {
+        document.getElementById("lolol").className = "lol";
+        document.getElementById("lololol").className = "";
+        document.getElementById("lolololol").innerHTML = "LOL";
+        var lolol = new Image();
+        lolol.src = lol;
+        lolol.onload = function() {
+        var lololol = document.getElementById("lololol")
+        var lol = lololol.getContext('2d');
+        lol.drawImage(lolol, 0, 0);
 
-            lol.fillStyle = "rgba(0, 0, 0, 0.5)";
-            lol.fillRect(0, 540, 480, 40);
+        lol.fillStyle = "rgba(0, 0, 0, 0.5)";
+        lol.fillRect(0, 540, 480, 40);
 
-            lol.font = "30px Helvetica";
-            lol.fillStyle = "white";
-            lol.textAlign = "center";
-            lol.fillText("Lol", lololol.width / 2, 570);
+        lol.font = "30px Helvetica";
+        lol.fillStyle = "white";
+        lol.textAlign = "center";
+        lol.fillText("Lol", lololol.width / 2, 570);
 
-            var lolololol = document.createElement("a");
-            lolololol.download = "Lol.jpg";
-            lolololol.href = lololol.toDataURL();
-            document.body.appendChild(lolololol);
-            lolololol.click();
-            document.body.removeChild(lolololol);
-          }
-        });
-      }
-		}
-	</script>
-	
+        var lolololol = document.createElement("a");
+        lolololol.download = "Lol.jpg";
+        lolololol.href = lololol.toDataURL();
+        document.body.appendChild(lolololol);
+        lolololol.click();
+        document.body.removeChild(lolololol);
+        }
+    });
+  }
+}
+</script>
+
 </body>
 </html>
