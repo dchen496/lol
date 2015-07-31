@@ -20,10 +20,14 @@
 
 	<script type="text/javascript" src="webcam.min.js"></script>
 	<script type="text/javascript">
+    var notlol = 1280;
+    if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+      notlol = 960;
+    }
 		Webcam.set({
-			width: 960,
+			width: notlol,
 			height: 720,
-			dest_width: 960,
+			dest_width: notlol,
 			dest_height: 720,
 			crop_width: 480,
 			crop_height: 720,
